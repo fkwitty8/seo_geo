@@ -23,6 +23,17 @@
 
     <link rel="preconnect" href="https://images.unsplash.com">
     <link rel="stylesheet" href="style.css">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-DK9WTFL13V"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-DK9WTFL13V');
+    </script>
+    
 </head>
 
 <body>
@@ -39,13 +50,29 @@
             
             <p>This pasta is great for busy weeknights. It takes exactly <time datetime="PT20M">20 minutes</time>.</p>
 
-            <section>
-                <h2>Ingredients</h2>
-                <ul>
-                    <li>2 cups Flour</li>
-                    <li>3 large Eggs</li>
-                    <li>1 tbsp Water</li>
-                </ul>
+            <section id="recipe-calculator">
+              <h2>Ingredients</h2>
+              <p>Adjust servings: 
+                  <input type="number" id="servings" value="1" min="1" max="10" style="width: 50px; padding: 5px;">
+              </p>
+              
+              <ul>
+                  <li><span class="qty" data-base="2">2</span> cups Flour</li>
+                  <li><span class="qty" data-base="3">3</span> large Eggs</li>
+                  <li><span class="qty" data-base="1">1</span> tbsp Water</li>
+              </ul>
+            </section>
+
+            <section id="rating-section">
+              <h3>Rate this Recipe</h3>
+              <div class="star-rating">
+                  <span class="star" data-value="1">&#9733;</span>
+                  <span class="star" data-value="2">&#9733;</span>
+                  <span class="star" data-value="3">&#9733;</span>
+                  <span class="star" data-value="4">&#9733;</span>
+                  <span class="star" data-value="5">&#9733;</span>
+              </div>
+              <p id="rating-message">Click a star to vote!</p>
             </section>
 
             <figure>
@@ -103,7 +130,52 @@
             }
         ]
         }
-    </script>   
+    </script> 
+    
+    <script>
+      const servingsInput = document.getElementById('servings');
+      const quantities = document.querySelectorAll('.qty');
+
+      servingsInput.addEventListener('input', () => {
+          const multiplier = servingsInput.value;
+          
+          // Prevent empty or zero inputs
+          if (multiplier < 1) return;
+
+          quantities.forEach(span => {
+              const baseValue = parseFloat(span.getAttribute('data-base'));
+              // Update the text inside the span
+              span.innerText = baseValue * multiplier;
+          });
+      });
+    </script>
+
+    <script>
+        const stars = document.querySelectorAll('.star');
+        const message = document.getElementById('rating-message');
+
+        stars.forEach((star, index) => {
+            // Hover effect: highlight stars up to the current one
+            star.addEventListener('mouseover', () => {
+                stars.forEach((s, i) => s.classList.toggle('hover', i <= index));
+            });
+
+            // Remove hover effect
+            star.addEventListener('mouseout', () => {
+                stars.forEach(s => s.classList.remove('hover'));
+            });
+
+            // Click effect: "lock in" the rating
+            star.addEventListener('click', () => {
+                const rating = star.getAttribute('data-value');
+                stars.forEach((s, i) => s.classList.toggle('selected', i <= index));
+                message.innerText = `Thank you! You rated this ${rating} stars.`;
+                
+                // Bonus: In a real app, you'd send this 'rating' to your server here.
+                console.log("User rating submitted:", rating);
+            });
+        });
+    </script>
 </body>
 </html>
 

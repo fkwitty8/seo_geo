@@ -50,3 +50,41 @@ figcaption {
     font-style: italic;
     color: #666;
 }
+
+#recipe-calculator input {
+    border: 2px solid #d35400;
+    border-radius: 4px;
+    font-weight: bold;
+    color: #d35400;
+}
+
+.qty {
+    font-weight: bold;
+    color: #e67e22;
+    font-size: 1.1em;
+}
+
+#rating-section {
+    margin-top: 30px;
+    padding: 15px;
+    background: #fff;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.star-rating {
+    font-size: 2.5rem;
+    cursor: pointer;
+    color: #ccc; /* Default gray stars */
+    transition: color 0.2s;
+}
+
+.star.hover, .star.selected {
+    color: #f1c40f; /* Golden yellow */
+}
+
+#rating-message {
+    font-style: italic;
+    color: #666;
+    margin-top: 10px;
+}
