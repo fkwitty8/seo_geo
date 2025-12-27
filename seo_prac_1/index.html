@@ -158,7 +158,7 @@
       <p>&copy; 2025 My Cooking Blog</p>
     </footer>
 
-    <script type="application/ld+json" defer>
+    <!-- <script type="application/ld+json" defer>
       {
         "@context": "https://schema.org/",
         "@type": "Recipe",
@@ -191,6 +191,73 @@
           {
             "@type": "HowToStep",
             "text": "Mix until a dough forms, knead for 10 minutes, and let rest."
+          }
+        ]
+      }
+    </script> -->
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Organization",
+            "@id": "https://fkwitty8.github.io/seo_geo/seo_prac_1/#organization",
+            "name": "Witty Culinary Arts ",
+            "url": "https://fkwitty8.github.io/seo_geo/seo_prac_1",
+            "logo": "https://fkwitty8.github.io/seo_geo/favicon.png",
+            "sameAs": ["https://twitter.com/Kiyimba_f_witty"]
+          },
+          {
+            "@type": "Person",
+            "@id": "https://fkwitty8.github.io/seo_geo/seo_prac_1/#author",
+            "name": "Kiyimba F. Witty",
+            "jobTitle": "Lead Chef & Developer",
+            "worksFor": {
+              "@id": "https://fkwitty8.github.io/seo_geo/seo_prac_1/#organization"
+            }
+          },
+          {
+            "@type": "Recipe",
+            "name": "The Only 20-Minute Pasta Recipe You Need",
+            "author": { "@id": "https://fkwitty8.github.io/seo_geo/seo_prac_1/#author" },
+            "publisher": {
+              "@id": "https://fkwitty8.github.io/seo_geo/seo_prac_1/#organization"
+            },
+            "datePublished": "2025-01-01",
+            "prepTime": "PT5M",
+            "cookTime": "PT15M",
+            "totalTime": "PT20M",
+            "recipeYield": "1 serving",
+            "recipeIngredient": [
+              "2 cups Flour",
+              "3 large Eggs",
+              "1 tbsp Water"
+            ],
+            "aggregateRating": {
+              "@type": "AggregateRating",
+              "ratingValue": "4.8",
+              "ratingCount": "500"
+            },
+            "recipeIngredient": [
+              "2 cups Flour",
+              "3 large Eggs",
+              "1 tbsp Water"
+            ],
+            "recipeInstructions": [
+              {
+                "@type": "HowToStep",
+                "text": "Mound the flour and make a well in the center."
+              },
+              {
+                "@type": "HowToStep",
+                "text": "Beat the eggs and water together, then pour into the well."
+              },
+              {
+                "@type": "HowToStep",
+                "text": "Mix until a dough forms, knead for 10 minutes, and let rest."
+              }
+            ]
           }
         ]
       }
